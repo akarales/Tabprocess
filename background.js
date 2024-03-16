@@ -14,6 +14,19 @@ Testing: Use this site for easy testing https://ai-stealth-challenge.tiiny.site/
 Hint: The solution is only a few lines of code.
 */
 
-console.log("background.js running") // background console logs can be found by inspecting the extension in chrome://extensions > developer mode > then click on "service worker" > then go to console
+console.log("background.js running");
 
-/* YOUR CODE BELOW THIS LINE :) */
+try {
+    Object.defineProperty(document, "visibilityState", {
+      get: function() {
+        return "visible";
+      },
+      configurable: true
+    });
+  
+    console.log('Redefinition attempt completed.');
+    }
+catch (error) {
+    console.error("Error during property redefinition:", error);
+}
+  
